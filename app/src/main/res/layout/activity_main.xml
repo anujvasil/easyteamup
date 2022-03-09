@@ -20,8 +20,8 @@
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="254dp"
-        android:layout_height="48dp"
+        android:layout_width="276dp"
+        android:layout_height="45dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -30,7 +30,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.544"
@@ -64,8 +64,8 @@
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="265dp"
-        android:layout_height="48dp"
+        android:layout_width="273dp"
+        android:layout_height="41dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="email"
