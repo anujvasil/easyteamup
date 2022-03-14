@@ -10,6 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyTeamUp">
         <activity
+            android:name=".confirmed_invites"
+            android:exported="false" />
+        <activity
+            android:name=".pending_invites"
+            android:exported="false" />
+        <activity
+            android:name=".my_confirmed_events"
+            android:exported="false" />
+        <activity
+            android:name=".my_pending_events"
+            android:exported="false" />
+        <activity
+            android:name=".event_info"
+            android:exported="false" />
+        <activity
+            android:name=".discover_list"
+            android:exported="false" />
+        <activity
+            android:name=".post_event"
+            android:exported="false" />
+        <activity
+            android:name=".mapview"
+            android:exported="false" />
+        <activity
+            android:name=".my_account"
+            android:exported="false" />
+        <activity
             android:name=".account_setup"
             android:exported="false" />
         <activity

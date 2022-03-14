@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openNewActivity(){
-        Intent intent = new Intent(this, account_setup.class);
+        Intent intent = new Intent(this, discover_list.class);
         startActivity(intent);
     }
 
