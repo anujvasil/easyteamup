@@ -12,6 +12,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     Button button;
+    Button login;
     EditText email;
     EditText password;
     @Override
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = (Button) findViewById(R.id.button2);
+        login = (Button) findViewById(R.id.button);
         email = (EditText) findViewById(R.id.editTextTextEmailAddress);
         password = (EditText) findViewById(R.id.editTextTextPassword);
 
@@ -26,14 +28,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!email.getText().toString().matches("") && !password.getText().toString().matches("")){
-                    openNewActivity();
+                    openSetup();
+                }
+
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!email.getText().toString().matches("") && !password.getText().toString().matches("")){
+                    openProfilePage();
                 }
 
             }
         });
     }
-    public void openNewActivity(){
-        Intent intent = new Intent(this, discover_list.class);
+    public void openSetup(){
+        Intent intent = new Intent(this, account_setup.class);
+        startActivity(intent);
+    }
+
+    public void openProfilePage(){
+        Intent intent = new Intent(this, my_account.class);
         startActivity(intent);
     }
 

@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2935" />
         <entry key="app/src/main/res/layout/account_setup.xml" value="0.23505147298177081" />
         <entry key="app/src/main/res/layout/activity_account_setup.xml" value="0.2640307540208573" />
+        <entry key="app/src/main/res/layout/activity_confirmed_invites.xml" value="0.33789260385005065" />
         <entry key="app/src/main/res/layout/activity_discover_list.xml" value="0.31425628662109384" />
         <entry key="app/src/main/res/layout/activity_event_info.xml" value="0.3386062419837537" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.34303217348845116" />

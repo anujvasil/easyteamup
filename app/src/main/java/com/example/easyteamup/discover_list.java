@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +21,15 @@ public class discover_list extends AppCompatActivity {
     private RecyclerView recycle;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    Button map;
+    Button account;
+    Button event;
+    Button invite;
 
     public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
         private ArrayList<Event> eventList;
+
 
         public class EventViewHolder extends RecyclerView.ViewHolder {
 
@@ -79,6 +86,61 @@ public class discover_list extends AppCompatActivity {
         adapter = new EventAdapter(eventList);
         recycle.setLayoutManager(layoutManager);
         recycle.setAdapter(adapter);
+
+        map = (Button) findViewById(R.id.button10);
+        event = (Button) findViewById(R.id.button21);
+        account = (Button) findViewById(R.id.button22);
+        invite = (Button) findViewById(R.id.button13);
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
+
+            }
+        });
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAccount();
+
+            }
+        });
+        event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEvent();
+
+            }
+        });
+
+        invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInvite();
+
+            }
+        });
+    }
+
+    public void openMap(){
+        Intent intent = new Intent(this, mapview.class);
+        startActivity(intent);
+    }
+
+    public void openAccount(){
+        Intent intent = new Intent(this, my_account.class);
+        startActivity(intent);
+    }
+
+    public void openEvent(){
+        Intent intent = new Intent(this, my_pending_events.class);
+        startActivity(intent);
+    }
+
+    public void openInvite(){
+        Intent intent = new Intent(this, pending_invites.class);
+        startActivity(intent);
     }
 
 
