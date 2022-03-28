@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
+import javax.net.ssl.HandshakeCompletedEvent;
+
 
 public class DBConnectionHelper {
     Connection connection;
@@ -453,19 +455,25 @@ public class DBConnectionHelper {
         return true;
     }
 
-    public boolean validateUser(String username, String password) {
+    public Map<String,String> validateUser(String email, String password) {
         String query = "{CALL sp_validateUser(?,?)}";
         CallableStatement stmt = prepCall(query);
+        Map<String,String> out = null;
         try {
-            stmt.setString("p_username",username);
+            stmt.setString("p_email", email);
             stmt.setString("p_password", password);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            return rs.getInt("valid") == 1;
+            String username = rs.getString("username");
+            String fullname = rs.getString("full_name");
+            out = new HashMap<>();
+            out.put("username",username);
+            out.put("fullname",fullname);
+            return out;
         }
         catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 

@@ -12,10 +12,17 @@ public class post_event extends AppCompatActivity {
     Button back;
     Button post;
 
+    String username, email, fullname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_event);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+        email = intent.getStringExtra("email");
+        fullname = intent.getStringExtra("fullname");
 
         back = (Button) findViewById(R.id.button20);
         post = (Button) findViewById(R.id.button14);
@@ -39,11 +46,17 @@ public class post_event extends AppCompatActivity {
 
     public void goBack(){
         Intent intent = new Intent(this, my_pending_events.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void postEvent(){
         Intent intent = new Intent(this, my_pending_events.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 }

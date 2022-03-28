@@ -26,6 +26,8 @@ public class discover_list extends AppCompatActivity {
     Button account;
     Button event;
     Button invite;
+    String username, email, fullname;
+
 
     public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
@@ -76,7 +78,12 @@ public class discover_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover_list);
         DBConnectionHelper connectionHelper = new DBConnectionHelper();
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+        email = intent.getStringExtra("email");
+        fullname = intent.getStringExtra("fullname");
         ArrayList<Event> eventList = connectionHelper.discoverEvents();
+
 
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);
@@ -123,21 +130,33 @@ public class discover_list extends AppCompatActivity {
 
     public void openMap(){
         Intent intent = new Intent(this, mapview.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openAccount(){
         Intent intent = new Intent(this, my_account.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openEvent(){
         Intent intent = new Intent(this, my_pending_events.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openInvite(){
         Intent intent = new Intent(this, pending_invites.class);
+        intent.putExtra("username",username);
+        intent.putExtra("email",email);
+        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
