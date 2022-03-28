@@ -56,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
                         fullname = m.get("fullname");
                         openProfilePage();
                     }
+                    else {
+                        TextView invlogin = (TextView) findViewById(R.id.textView9);
+                        invlogin.setText("Invalid Login");
+                    }
 
                 }
-                TextView invlogin = (TextView) findViewById(R.id.textView9);
-                invlogin.setText("Invalid Login");
-
-
+                else {
+                    TextView invlogin = (TextView) findViewById(R.id.textView9);
+                    invlogin.setText("Invalid Login");
+                }
             }
         });
     }
