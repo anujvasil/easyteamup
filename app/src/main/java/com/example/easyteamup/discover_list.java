@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class discover_list extends AppCompatActivity {
@@ -74,11 +75,8 @@ public class discover_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover_list);
-        ArrayList<Event> eventList = new ArrayList<>();
-        eventList.add(new Event("type", "desc", false, "t1","t2","t3","t4", "due", com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_normal));
-        eventList.add(new Event("type", "desc", false, "t1","t2","t3","t4", "due", com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_normal));
-        eventList.add(new Event("type", "desc", false, "t1","t2","t3","t4", "due", com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_normal));
-        eventList.add(new Event("type", "desc", false, "t1","t2","t3","t4", "due", com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_normal));
+        DBConnectionHelper connectionHelper = new DBConnectionHelper();
+        ArrayList<Event> eventList = connectionHelper.discoverEvents();
 
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);

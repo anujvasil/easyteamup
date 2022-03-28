@@ -1,19 +1,23 @@
 package com.example.easyteamup;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Event {
 
-    private String type;
+    private String title;
     private String description;
     private boolean isPrivate;
-    private String time1;
-    private String time2;
-    private String time3;
-    private String time4;
-    private String dueDate;
+    private Timestamp time1;
+    private Timestamp time2;
+    private Timestamp time3;
+    private Timestamp time4;
+    private Timestamp dueDate;
     private int image;
+    private Integer id;
 
-    public Event(String t, String desc, boolean pri, String t1, String t2, String t3, String t4, String due, int img) {
-        type = t;
+    public Event(String t, String desc, boolean pri, Timestamp t1, Timestamp t2, Timestamp t3, Timestamp t4, Timestamp due, int img) {
+        title = t;
         description = desc;
         isPrivate = pri;
         time1 = t1;
@@ -22,10 +26,11 @@ public class Event {
         time4 = t4;
         dueDate = due;
         image = img;
+        id = null;
     }
 
-    public String getType() {
-        return this.type;
+    public String getTitle() {
+        return this.title;
     }
     public String getDescription() {
         return this.description;
@@ -33,24 +38,31 @@ public class Event {
     public boolean isEventPrivate() {
         return this.isPrivate;
     }
-    public String getTime1() {
+    public Timestamp getTime1() {
         return this.time1;
     }
-    public String getTime2() {
+    public Timestamp getTime2() {
         return this.time2;
     }
-    public String getTime3() {
+    public Timestamp getTime3() {
         return this.time3;
     }
-    public String getTime4() {
+    public Timestamp getTime4() {
         return this.time4;
     }
-    public String getDueDate() {
+    public Timestamp getDueDate() {
         return this.dueDate;
     }
     public int getImage() {
         return this.image;
     }
 
+    public Integer getId() {
+        return this.id;
+    }
+
+    void setId(int id) {
+        this.id = id;
+    }
 
 }
