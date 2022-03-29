@@ -69,6 +69,8 @@ public class my_pending_events extends AppCompatActivity {
             holder.click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int i = holder.getAdapterPosition();
+                    ((App)getApplication()).setEvent(eventList.get(i));
                     openEventInfo();
 
                 }
@@ -100,7 +102,7 @@ public class my_pending_events extends AppCompatActivity {
         invite = (Button) findViewById(R.id.button13);
 
         DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
-        ArrayList<Event> eventList = connectionHelper.discoverEvents();
+        ArrayList<Event> eventList = connectionHelper.getOwnerEventsPending(username);
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);

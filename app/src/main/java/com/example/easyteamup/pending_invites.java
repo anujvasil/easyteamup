@@ -68,6 +68,8 @@ public class pending_invites extends AppCompatActivity {
             holder.click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int i = holder.getAdapterPosition();
+                    ((App)getApplication()).setEvent(eventList.get(i));
                     openEventInfo();
 
                 }
@@ -87,10 +89,9 @@ public class pending_invites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pending_invites);
 
-        Intent intent = getIntent();
-        email = intent.getStringExtra("email");
-        username = intent.getStringExtra("username");
-        fullname = intent.getStringExtra("fullname");
+
+        username = ((App)getApplication()).getUsername();
+
 
         confirmed = (Button) findViewById(R.id.button26);
         events = (Button) findViewById(R.id.button21);
@@ -98,7 +99,7 @@ public class pending_invites extends AppCompatActivity {
         account = (Button) findViewById(R.id.button22);
 
         DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
-        ArrayList<Event> eventList = connectionHelper.discoverEvents();
+        ArrayList<Event> eventList = connectionHelper.getPendingInvites(username);
 
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);

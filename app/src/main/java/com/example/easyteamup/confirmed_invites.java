@@ -67,6 +67,8 @@ public class confirmed_invites extends AppCompatActivity {
             holder.click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int i = holder.getAdapterPosition();
+                    ((App)getApplication()).setEvent(eventList.get(i));
                     openEventInfo();
 
                 }
@@ -86,12 +88,14 @@ public class confirmed_invites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmed_invites);
 
+        String username = ((App)getApplication()).getUsername();
+
         pending = (Button) findViewById(R.id.button27);
         events = (Button) findViewById(R.id.button21);
         discover = (Button) findViewById(R.id.button23);
         account = (Button) findViewById(R.id.button22);
         DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
-        ArrayList<Event> eventList = connectionHelper.discoverEvents();
+        ArrayList<Event> eventList = connectionHelper.getConfirmedInvites(username);
 
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);
