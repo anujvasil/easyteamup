@@ -27,9 +27,9 @@ public class my_account extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         Intent intent = getIntent();
-        email = intent.getStringExtra("email");
-        fullname = intent.getStringExtra("fullname");
-        username = intent.getStringExtra("username");
+        email = ((App)getApplication()).getEmail();
+        fullname = ((App)getApplication()).getFullname();
+        username = ((App)getApplication()).getUsername();
 
         logout = (Button) findViewById(R.id.button5);
         events = (Button) findViewById(R.id.button8);
@@ -80,25 +80,16 @@ public class my_account extends AppCompatActivity {
 
     public void openEvents(){
         Intent intent = new Intent(this, my_pending_events.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openDiscover(){
         Intent intent = new Intent(this, discover_list.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openInvite(){
         Intent intent = new Intent(this, pending_invites.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 }

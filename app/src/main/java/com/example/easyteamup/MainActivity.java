@@ -81,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("email",email);
         intent.putExtra("username",username);
         intent.putExtra("fullname",fullname);
+
+        ((App)getApplication()).setEmail(email);
+        ((App)getApplication()).setFullname(fullname);
+        ((App)getApplication()).setUsername(username);
+
         startActivity(intent);
     }
 

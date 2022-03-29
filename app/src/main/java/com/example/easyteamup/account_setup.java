@@ -44,9 +44,9 @@ public class account_setup extends AppCompatActivity {
 
     public void openAccount(){
         Intent intent = new Intent(this, my_account.class);
-        intent.putExtra("email",email);
-        intent.putExtra("username",username);
-        intent.putExtra("fullname",fullname);
+        ((App)getApplication()).setUsername(username);
+        ((App)getApplication()).setFullname(fullname);
+        ((App)getApplication()).setEmail(email);
         startActivity(intent);
     }
 }
