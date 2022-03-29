@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class discover_list extends AppCompatActivity {
 
@@ -38,11 +39,13 @@ public class discover_list extends AppCompatActivity {
 
             public ImageView img;
             public TextView text1;
+            public Button click;
 
             public EventViewHolder(View itemview) {
                 super(itemview);
                 img = itemview.findViewById(R.id.imageView8);
                 text1 = itemview.findViewById(R.id.textView4);
+                click = itemview.findViewById(R.id.button16);
             }
         }
 
@@ -63,6 +66,13 @@ public class discover_list extends AppCompatActivity {
             Event curr = eventList.get(position);
             holder.img.setImageResource(curr.getImage());
             holder.text1.setText(curr.getDescription());
+            holder.click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openEventInfo();
+
+                }
+            });
         }
 
         @Override
@@ -157,6 +167,10 @@ public class discover_list extends AppCompatActivity {
         intent.putExtra("username",username);
         intent.putExtra("email",email);
         intent.putExtra("fullname",fullname);
+        startActivity(intent);
+    }
+    public void openEventInfo(){
+        Intent intent = new Intent(this, event_info.class);
         startActivity(intent);
     }
 
