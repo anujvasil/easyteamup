@@ -33,7 +33,7 @@ public class account_setup extends AppCompatActivity {
                 fullnameText = (EditText) findViewById(R.id.editTextTextPersonName);
                 fullname = fullnameText.getText().toString();
                 username = usernameText.getText().toString();
-                DBConnectionHelper connectionHelper = new DBConnectionHelper();
+                DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
                 connectionHelper.createUser(username,password,fullname,email);
                 openAccount();
             }
