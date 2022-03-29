@@ -42,9 +42,9 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
         setContentView(R.layout.activity_post_event);
 
         Intent intent = getIntent();
-        username = intent.getStringExtra("username");
-        email = intent.getStringExtra("email");
-        fullname = intent.getStringExtra("fullname");
+        username = ((App)getApplication()).getUsername();
+        email = ((App)getApplication()).getEmail();
+        fullname = ((App)getApplication()).getFullname();
         time1day = null; time1month = null; time1year = null; time1hour = null; time1minute = null;
 
         back = (Button) findViewById(R.id.button20);
