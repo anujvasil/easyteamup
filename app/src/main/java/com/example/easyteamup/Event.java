@@ -1,5 +1,9 @@
 package com.example.easyteamup;
 
+import android.util.Log;
+
+import com.mapbox.geojson.Point;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 
@@ -14,9 +18,11 @@ public class Event {
     private Timestamp time4;
     private Timestamp dueDate;
     private int image;
+    private double lat;
+    private double lng;
     private Integer id;
 
-    public Event(String t, String desc, boolean pri, Timestamp t1, Timestamp t2, Timestamp t3, Timestamp t4, Timestamp due, int img) {
+    public Event(String t, String desc, boolean pri, Timestamp t1, Timestamp t2, Timestamp t3, Timestamp t4, Timestamp due, int img, double latitude, double longitude) {
         title = t;
         description = desc;
         isPrivate = pri;
@@ -26,6 +32,8 @@ public class Event {
         time4 = t4;
         dueDate = due;
         image = img;
+        lat = latitude;
+        lng = longitude;
         id = null;
     }
 
@@ -55,6 +63,10 @@ public class Event {
     }
     public int getImage() {
         return this.image;
+    }
+    public Point getLocation() {
+        Point p = Point.fromLngLat(lng, lat);
+        return p;
     }
 
     public Integer getId() {

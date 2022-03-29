@@ -1,6 +1,7 @@
 package com.example.easyteamup;
 
 import android.os.StrictMode;
+import android.util.Log;
 
 
 import java.sql.*;
@@ -164,8 +165,16 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
                 out.add(event);
             }
@@ -195,8 +204,16 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
                 out.add(event);
             }
@@ -223,8 +240,16 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
                 out.add(event);
             }
@@ -270,7 +295,15 @@ public class DBConnectionHelper {
             Timestamp time3 = rs.getTimestamp("time_3");
             Timestamp time4 = rs.getTimestamp("time_4");
             Timestamp due = rs.getTimestamp("due_time");
-            out = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+            double lat = 0;
+            double lng = 0;
+            try {
+                lat = Double.parseDouble(rs.getString("latitude"));
+                lng = Double.parseDouble(rs.getString("longitude"));
+            } catch(Exception e) {
+                // do nothing
+            }
+            out = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
             out.setId(id);
         }
         catch (Exception e) {
@@ -311,8 +344,16 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
                 out.add(event);
             }
@@ -339,11 +380,18 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
-                out.add(event);
-            }
+                out.add(event);            }
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -367,8 +415,16 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                double lat = 0;
+                double lng = 0;
+                try {
+                    lat = Double.parseDouble(rs.getString("latitude"));
+                    lng = Double.parseDouble(rs.getString("longitude"));
+                } catch(Exception e) {
+                    // do nothing
+                }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
                 event.setId(id);
                 out.add(event);
             }

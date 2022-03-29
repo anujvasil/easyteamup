@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 email = emailText.getText().toString();
                 password = passwordText.getText().toString();
                 if (!email.matches("") && !password.matches("")){
-                    DBConnectionHelper connectionHelper = new DBConnectionHelper();
+                    DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
                     Map<String,String> m = connectionHelper.validateUser(email,password);
                     if (m != null) {
                         username = m.get("username");
