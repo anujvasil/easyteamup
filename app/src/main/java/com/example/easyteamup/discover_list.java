@@ -77,7 +77,7 @@ public class discover_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover_list);
-        DBConnectionHelper connectionHelper = new DBConnectionHelper();
+        DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         email = intent.getStringExtra("email");
