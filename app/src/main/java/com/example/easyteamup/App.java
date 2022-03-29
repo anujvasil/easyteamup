@@ -8,6 +8,15 @@ public class App extends Application {
     private String username;
     private String email;
     private String fullname;
+    private Event event;
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 
     public void setUsername(String username) {
         this.username = username;

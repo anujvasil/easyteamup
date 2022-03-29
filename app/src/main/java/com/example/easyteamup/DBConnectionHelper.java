@@ -166,6 +166,7 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                String owner = rs.getString("owner");
                 double lat = 0;
                 double lng = 0;
                 try {
@@ -175,7 +176,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);
             }
@@ -205,6 +206,7 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                String owner = rs.getString("owner");
                 double lat = 0;
                 double lng = 0;
                 try {
@@ -214,7 +216,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);
             }
@@ -241,6 +243,7 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                String owner = rs.getString("owner");
                 double lat = 0;
                 double lng = 0;
                 try {
@@ -250,7 +253,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);
             }
@@ -296,6 +299,7 @@ public class DBConnectionHelper {
             Timestamp time3 = rs.getTimestamp("time_3");
             Timestamp time4 = rs.getTimestamp("time_4");
             Timestamp due = rs.getTimestamp("due_time");
+            String owner = rs.getString("owner");
             double lat = 0;
             double lng = 0;
             try {
@@ -304,7 +308,7 @@ public class DBConnectionHelper {
             } catch(Exception e) {
                 // do nothing
             }
-            out = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+            out = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
             out.setId(id);
         }
         catch (Exception e) {
@@ -354,7 +358,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);
             }
@@ -390,7 +394,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);            }
         }
@@ -416,6 +420,7 @@ public class DBConnectionHelper {
                 Timestamp time3 = rs.getTimestamp("time_3");
                 Timestamp time4 = rs.getTimestamp("time_4");
                 Timestamp due = rs.getTimestamp("due_time");
+                String owner = rs.getString("owner");
                 double lat = 0;
                 double lng = 0;
                 try {
@@ -425,7 +430,7 @@ public class DBConnectionHelper {
                     // do nothing
                 }
                 int id = rs.getInt("id");
-                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng);
+                Event event = new Event(t, desc, priv, time1, time2, time3, time4, due,  0, lat, lng,owner);
                 event.setId(id);
                 out.add(event);
             }

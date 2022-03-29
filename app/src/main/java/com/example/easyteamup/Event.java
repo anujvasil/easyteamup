@@ -1,5 +1,6 @@
 package com.example.easyteamup;
 
+import android.graphics.Point;
 import android.util.Log;
 
 import com.mapbox.geojson.Point;
@@ -22,7 +23,10 @@ public class Event {
     private double lng;
     private Integer id;
 
-    public Event(String t, String desc, boolean pri, Timestamp t1, Timestamp t2, Timestamp t3, Timestamp t4, Timestamp due, int img, double latitude, double longitude) {
+
+    private String owner;
+
+    public Event(String t, String desc, boolean pri, Timestamp t1, Timestamp t2, Timestamp t3, Timestamp t4, Timestamp due, int img, double latitude, double longitude, String user) {
         title = t;
         description = desc;
         isPrivate = pri;
@@ -35,6 +39,7 @@ public class Event {
         lat = latitude;
         lng = longitude;
         id = null;
+        owner = user;
     }
 
     public String getTitle() {
@@ -67,6 +72,9 @@ public class Event {
     public Point getLocation() {
         Point p = Point.fromLngLat(lng, lat);
         return p;
+    }
+    public String getOwner() {
+        return owner;
     }
 
     public Integer getId() {

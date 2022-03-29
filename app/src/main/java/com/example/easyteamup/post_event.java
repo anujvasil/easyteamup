@@ -156,7 +156,7 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
                     due = new Timestamp(dueyear-1900, duemonth, dueday, duehour, dueminute,0,0);
                 }
                 priv = ((CheckBox) findViewById(R.id.checkBox)).isChecked();
-                Event event = new Event(null,desc,priv,time1,time2,time3,time4,due,0,0,0);
+                Event event = new Event(null,desc,priv,time1,time2,time3,time4,due,0,0,0,username);
                 DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
                 connectionHelper.createEvent(event,username);
                 postEvent();

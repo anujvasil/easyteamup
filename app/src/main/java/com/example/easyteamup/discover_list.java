@@ -69,6 +69,8 @@ public class discover_list extends AppCompatActivity {
             holder.click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int i = holder.getAdapterPosition();
+                    ((App)getApplication()).setEvent(eventList.get(i));
                     openEventInfo();
 
                 }
