@@ -1,6 +1,6 @@
 package com.example.easyteamup;
 
-import android.graphics.Point;
+
 import android.util.Log;
 
 import com.mapbox.geojson.Point;
