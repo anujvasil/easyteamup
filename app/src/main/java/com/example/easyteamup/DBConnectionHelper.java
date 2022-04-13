@@ -29,8 +29,7 @@ public class DBConnectionHelper {
         url = "jdbc:mysql://cs310.cj9r3muy3ryl.us-east-1.rds.amazonaws.com:3306/team_up";
         schema = "team_up";
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+
 
         try {
             if (connection != null && !connection.isClosed()) {
