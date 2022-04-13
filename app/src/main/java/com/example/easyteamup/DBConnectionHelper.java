@@ -519,7 +519,7 @@ public class DBConnectionHelper {
     public Map<String,String> validateUser(String email, String password) {
         String query = "{CALL sp_validateUser(?,?)}";
         CallableStatement stmt = prepCall(query);
-        Map<String,String> out = null;
+        Map<String,String> out;
         try {
             stmt.setString("p_email", email);
             stmt.setString("p_password", password);
