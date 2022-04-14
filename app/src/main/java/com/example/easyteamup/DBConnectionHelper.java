@@ -29,8 +29,7 @@ public class DBConnectionHelper {
         url = "jdbc:mysql://cs310.cj9r3muy3ryl.us-east-1.rds.amazonaws.com:3306/team_up";
         schema = "team_up";
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+
 
         try {
             if (connection != null && !connection.isClosed()) {
@@ -520,7 +519,7 @@ public class DBConnectionHelper {
     public Map<String,String> validateUser(String email, String password) {
         String query = "{CALL sp_validateUser(?,?)}";
         CallableStatement stmt = prepCall(query);
-        Map<String,String> out = null;
+        Map<String,String> out;
         try {
             stmt.setString("p_email", email);
             stmt.setString("p_password", password);

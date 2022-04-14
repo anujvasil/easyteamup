@@ -1,6 +1,7 @@
 package com.example.easyteamup;
 
 import android.app.Application;
+import android.os.StrictMode;
 
 public class App extends Application {
     private static App singleton;
@@ -55,6 +56,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         connectionHelper = new DBConnectionHelper();
         singleton = this;
     }
