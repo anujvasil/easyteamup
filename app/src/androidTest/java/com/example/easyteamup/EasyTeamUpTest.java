@@ -14,6 +14,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -208,6 +210,52 @@ public class EasyTeamUpTest {
                 .perform(click());
         onView(withId(R.id.button23))
                 .check(matches(isClickable()));
+    }
+    @Test
+    public void testMyPendingEvents() {
+        login();
+        onView(withId(R.id.button8))
+                .perform(click());
+        onView(withId(R.id.button11))
+                .check(matches(isClickable()));
+    }
+    @Test
+    public void testMyConfirmedEvents() {
+        login();
+        onView(withId(R.id.button8))
+                .perform(click());
+        onView(withId(R.id.button12))
+                .perform(click());
+        onView(withId(R.id.button24))
+                .check(matches(isClickable()));
+        onView(withId(R.id.button24))
+                .check(matches(isClickable()));
+
+    }
+    @Test
+    public void testMyPendingInvites() {
+        login();
+        onView(withId(R.id.button6))
+                .perform(click());
+    }
+    @Test
+    public void testMyConfirmedInvites() {
+        login();
+        onView(withId(R.id.button6))
+                .perform(click());
+        onView(withId(R.id.button26))
+                .perform(click());
+
+    }
+    @Test
+    public void testViewEvent() {
+        login();
+        onView(withId(R.id.button8))
+                .perform(click());
+        onView(withId(R.id.recycleViewer))
+                .check(matches(isDisplayed()));
+
+
     }
 }
 
