@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import com.mapbox.geojson.Point;
 
 /**
  *
@@ -55,4 +56,21 @@ public class DBConnectionHelperTest {
         assertEquals("johnsmith", userInfo.get("username"));
         assertNull(connectionHelper.validateUser("jsmith@gmail.com", "password124"));
     }
+
+    @Test
+    public void closeTest() {
+        connectionHelper.close();
+        assertNotNull(connectionHelper);
+    }
+    @Test
+    public void eventTimeTest() {
+        Event event = new Event("UnitTest1","Test from jUnit",true,new Timestamp(122,0,1,2,3,0,0),null,null,null,new Timestamp(122,1,2,3,4,0,0),0,0.0,0.0,"jUnit Tester");
+        int id = connectionHelper.createEvent(event,"jUnit Tester");
+        event.setId(id);
+        Integer temp = connectionHelper.getEventTime(id);
+        assertNull(temp);
+    }
+
+
+
 }
