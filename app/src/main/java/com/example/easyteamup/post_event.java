@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 
 public class post_event extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -139,6 +140,13 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
             public void onClick(View v) {
 //                type = findViewById(R.id.spinner).get;
                 desc = ((EditText) findViewById(R.id.editTextTextPersonName4)).getText().toString();
+                if(desc.isEmpty()) {
+                    return;
+                }
+                String address = ((EditText) findViewById(R.id.editTextTextPostalAddress)).getText().toString();
+                if(address.isEmpty()) {
+                    return;
+                }
                 time1 = null; time2 = null; time3 = null; time4 = null; due = null;
                 if (time1day != null && time1minute != null && time1hour != null && time1month != null && time1year != null) {
                     time1 = new Timestamp(time1year-1900, time1month, time1day, time1hour, time1minute,0,0);

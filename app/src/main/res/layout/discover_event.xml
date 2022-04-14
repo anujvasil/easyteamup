@@ -30,7 +30,7 @@
                 android:id="@+id/button16"
                 android:layout_width="0dp"
                 android:layout_height="54dp"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
                 android:background="#ED9E98"
                 android:text="See Event"
                 tools:layout_editor_absoluteX="414dp" />
