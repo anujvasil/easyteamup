@@ -17,6 +17,71 @@ public class Event {
     private Timestamp time1;
     private Timestamp time2;
     private Timestamp time3;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public void setTime1(Timestamp time1) {
+        this.time1 = time1;
+    }
+
+    public void setTime2(Timestamp time2) {
+        this.time2 = time2;
+    }
+
+    public void setTime3(Timestamp time3) {
+        this.time3 = time3;
+    }
+
+    public void setTime4(Timestamp time4) {
+        this.time4 = time4;
+    }
+
+    public void setDueDate(Timestamp dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     private Timestamp time4;
     private Timestamp dueDate;
     private int image;

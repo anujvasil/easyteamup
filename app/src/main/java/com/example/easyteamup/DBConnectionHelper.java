@@ -70,6 +70,27 @@ public class DBConnectionHelper {
 
     }
 
+    /**
+     * This is a way to run an executeUpdate without needing a whole new function call
+     * @param query query to update the database
+     * @param b flag to differentiate this function
+     * @return null
+     */
+    public ResultSet runProcedure(String query, boolean b) {
+        createConnection();
+        try {
+            Statement statement;
+            statement = connection.createStatement();
+            int i = statement.executeUpdate(query);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
     public CallableStatement prepCall(String query) {
         createConnection();
         try {
@@ -97,8 +118,8 @@ public class DBConnectionHelper {
             stmt.setInt("p_lengthMinutes", 0);
             stmt.setString("p_category", null);
             stmt.setString("p_categoryField", null);
-            stmt.setString("p_lat", null);
-            stmt.setString("p_long", null);
+            stmt.setString("p_lat", Double.toString(event.getLat()));
+            stmt.setString("p_long", Double.toString(event.getLng()));
             stmt.setTimestamp("p_time1", event.getTime1());
             stmt.setTimestamp("p_time2", event.getTime2());
             stmt.setTimestamp("p_time3", event.getTime3());
@@ -497,11 +518,11 @@ public class DBConnectionHelper {
             stmt.setString("p_owner", owner);
 
             stmt.setTimestamp("p_dueTime", event.getDueDate());
-//            stmt.setInt("p_lengthMinutes", );
-//            stmt.setString("p_category", );
-//            stmt.setString("p_categoryField", categoryField);
-//            stmt.setString("p_lat", lat);
-//            stmt.setString("p_long", lon);
+            stmt.setInt("p_lengthMinutes", 0);
+            stmt.setString("p_category", null);
+            stmt.setString("p_categoryField", null);
+            stmt.setString("p_lat", Double.toString(event.getLat()));
+            stmt.setString("p_long", Double.toString(event.getLng()));
             stmt.setTimestamp("p_time1", event.getTime1());
             stmt.setTimestamp("p_time2", event.getTime2());
             stmt.setTimestamp("p_time3", event.getTime3());
