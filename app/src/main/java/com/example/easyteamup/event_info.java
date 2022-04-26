@@ -22,13 +22,22 @@ public class event_info extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_info);
-        back = (Button) findViewById(R.id.button28);
+        back = (Button) findViewById(R.id.button17);
         join = (Button) findViewById(R.id.button29);
 
         Event event = ((App)getApplication()).getEvent();
         username = ((App)getApplication()).getUsername();
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getEmail();
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openList();
+
+            }
+        });
 
         join.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +81,7 @@ public class event_info extends AppCompatActivity {
         Intent intent = new Intent(this, discover_list.class);
         startActivity(intent);
     }
+
 
 
 
