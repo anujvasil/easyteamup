@@ -1,12 +1,16 @@
 package com.example.easyteamup;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class my_account extends AppCompatActivity {
@@ -19,6 +23,9 @@ public class my_account extends AppCompatActivity {
     TextView fullnameView, emailView;
 
     String email, fullname, username;
+    Uri profile_pic;
+    ImageView pic_view;
+    private static final int SELECT_PICTURE = 1;
 
 
     @Override
@@ -30,15 +37,26 @@ public class my_account extends AppCompatActivity {
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getFullname();
         username = ((App)getApplication()).getUsername();
+        profile_pic = ((App)getApplication()).getProfile_pic();
 
         logout = (Button) findViewById(R.id.button5);
         events = (Button) findViewById(R.id.button8);
         discover = (Button) findViewById(R.id.button7);
         invite = (Button) findViewById(R.id.button6);
+        pic_view = (ImageView) findViewById(R.id.imageView4);
         fullnameView = findViewById(R.id.textView);
         emailView = findViewById(R.id.textView2);
         emailView.setText(email);
         fullnameView.setText(fullname);
+        pic_view.setImageURI(profile_pic);
+
+        pic_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), SELECT_PICTURE);
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +89,15 @@ public class my_account extends AppCompatActivity {
 
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && data != null) {
+            profile_pic = data.getData();
+            pic_view.setImageURI((profile_pic));
+            ((App)getApplication()).setProfile_pic(profile_pic);
+        }
     }
 
     public void openLogin(){

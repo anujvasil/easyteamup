@@ -1,6 +1,7 @@
 package com.example.easyteamup;
 
 import android.app.Application;
+import android.net.Uri;
 import android.os.StrictMode;
 
 public class App extends Application {
@@ -10,6 +11,7 @@ public class App extends Application {
     private String email;
     private String fullname;
     private Event event;
+    private Uri profile_pic;
 
     public Event getEvent() {
         return event;
@@ -41,6 +43,14 @@ public class App extends Application {
 
     public String getUsername() {
         return username;
+    }
+
+    public Uri getProfile_pic() {
+        return profile_pic;
+    }
+
+    public void setProfile_pic(Uri pic) {
+        this.profile_pic = pic;
     }
 
 
