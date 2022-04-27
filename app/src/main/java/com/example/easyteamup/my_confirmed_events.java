@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class my_confirmed_events extends AppCompatActivity {
 
@@ -94,6 +95,10 @@ public class my_confirmed_events extends AppCompatActivity {
 
         DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
         ArrayList<Event> eventList = connectionHelper.getConfirmedEvents(username);
+        ArrayList<Event> eventList2 = connectionHelper.getOwnerEventsConfirmed(username);
+
+        eventList.addAll(eventList2);
+        eventList.sort((e1,e2) -> e1.getDueDate().compareTo(e2.getDueDate()));
         recycle = findViewById(R.id.recycleViewer);
         recycle.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -151,41 +156,26 @@ public class my_confirmed_events extends AppCompatActivity {
 
     public void openPending(){
         Intent intent = new Intent(this, my_pending_events.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openDiscover(){
         Intent intent = new Intent(this, discover_list.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openAccount(){
         Intent intent = new Intent(this, my_account.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void addEvent(){
         Intent intent = new Intent(this, post_event.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void openInvite(){
         Intent intent = new Intent(this, pending_invites.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 

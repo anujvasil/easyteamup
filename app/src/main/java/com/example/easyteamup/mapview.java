@@ -41,9 +41,9 @@ public class mapview extends AppCompatActivity {
         setContentView(R.layout.activity_mapview);
         DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
         Intent intent = getIntent();
-        username = intent.getStringExtra("username");
-        email = intent.getStringExtra("email");
-        fullname = intent.getStringExtra("fullname");
+        username = ((App) getApplication()).getUsername();
+        email = ((App) getApplication()).getEmail();
+        fullname = ((App) getApplication()).getFullname();
         eventList = connectionHelper.discoverEvents();
 
         mapView = findViewById(R.id.mapView);
@@ -70,9 +70,6 @@ public class mapview extends AppCompatActivity {
 
     public void openList(){
         Intent intent = new Intent(this, discover_list.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 }

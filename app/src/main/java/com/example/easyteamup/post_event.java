@@ -42,7 +42,6 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_event);
 
-        Intent intent = getIntent();
         username = ((App)getApplication()).getUsername();
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getFullname();
@@ -239,17 +238,11 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
 
     public void goBack(){
         Intent intent = new Intent(this, my_pending_events.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 
     public void postEvent(){
         Intent intent = new Intent(this, my_pending_events.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 }

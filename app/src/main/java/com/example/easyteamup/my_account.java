@@ -33,7 +33,7 @@ public class my_account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
 
-        Intent intent = getIntent();
+
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getFullname();
         username = ((App)getApplication()).getUsername();

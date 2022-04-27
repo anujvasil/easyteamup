@@ -25,10 +25,14 @@ public class event_info extends AppCompatActivity {
         back = (Button) findViewById(R.id.button17);
         join = (Button) findViewById(R.id.button29);
 
+
         Event event = ((App)getApplication()).getEvent();
         username = ((App)getApplication()).getUsername();
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getEmail();
+        if (username.equals(event.getOwner())) {
+            join.setText("Modify");
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

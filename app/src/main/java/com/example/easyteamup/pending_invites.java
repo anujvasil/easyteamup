@@ -143,30 +143,18 @@ public class pending_invites extends AppCompatActivity {
 
     public void openConfirmed(){
         Intent intent = new Intent(this, confirmed_invites.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
     public void openEvents(){
         Intent intent = new Intent(this, my_pending_events.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
     public void openDiscover(){
         Intent intent = new Intent(this, discover_list.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
     public void openAccounts(){
         Intent intent = new Intent(this, my_account.class);
-        intent.putExtra("username",username);
-        intent.putExtra("email",email);
-        intent.putExtra("fullname",fullname);
         startActivity(intent);
     }
 

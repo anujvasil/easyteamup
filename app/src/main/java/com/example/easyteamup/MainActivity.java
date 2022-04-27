@@ -71,16 +71,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openSetup(){
         Intent intent = new Intent(this, account_setup.class);
-        intent.putExtra("email",email);
-        intent.putExtra("password",password);
         startActivity(intent);
     }
 
     public void openProfilePage(){
         Intent intent = new Intent(this, my_account.class);
-        intent.putExtra("email",email);
-        intent.putExtra("username",username);
-        intent.putExtra("fullname",fullname);
 
         ((App)getApplication()).setEmail(email);
         ((App)getApplication()).setFullname(fullname);
@@ -88,7 +83,5 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-
 
 }
