@@ -33,14 +33,20 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
     String username, email, fullname;
     int lastbutton;
 
+    Event event;
+
     Timestamp time1, time2, time3, time4, due;
     String desc, type;
-    Boolean priv;
+    Boolean priv, editing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_event);
+
+        EditText descriptionText = (EditText) findViewById(R.id.editTextTextPersonName4);
+        CheckBox privateCheckbox = (CheckBox) findViewById(R.id.checkBox);
+        event = ((App)getApplication()).getEvent();
 
         username = ((App)getApplication()).getUsername();
         email = ((App)getApplication()).getEmail();
@@ -59,6 +65,19 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
         time4B.setText("Time Slot 4");
         timeDue = (Button) findViewById(R.id.editTextDate);
         timeDue.setText("Due Date");
+        editing = false;
+        Intent intent = getIntent();
+        if (intent.getExtras() != null && intent.getBooleanExtra("Editing",false) && event != null &&username.equals(event.getOwner())) {
+            editing = true;
+            descriptionText.setText(event.getDescription());
+            privateCheckbox.setChecked(event.isEventPrivate());
+            time1B.setText("Time Slot 1: " + event.getTime1().getHours() + ":" + event.getTime1().getMinutes() + " " + (event.getTime1().getMonth() + 1) + "/" + event.getTime1().getDay() + "/" + event.getTime1().getYear());
+            time2B.setText("Time Slot 2: " + event.getTime2().getHours() + ":" + event.getTime2().getMinutes() + " " + (event.getTime2().getMonth() + 1) + "/" + event.getTime2().getDay() + "/" + event.getTime2().getYear());
+            time3B.setText("Time Slot 3: " + event.getTime3().getHours() + ":" + event.getTime3().getMinutes() + " " + (event.getTime3().getMonth() + 1) + "/" + event.getTime3().getDay() + "/" + event.getTime3().getYear());
+            time4B.setText("Time Slot 4: " + event.getTime4().getHours() + ":" + event.getTime4().getMinutes() + " " + (event.getTime4().getMonth() + 1) + "/" + event.getTime4().getDay() + "/" + event.getTime4().getYear());
+            timeDue.setText("Due Date: " + event.getDueDate().getHours() + ":" + event.getDueDate().getMinutes() + " " + (event.getDueDate().getMonth() + 1) + "/" + event.getDueDate().getDay() + "/" + event.getDueDate().getYear());
+
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,9 +182,23 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
                     due = new Timestamp(dueyear-1900, duemonth, dueday, duehour, dueminute,0,0);
                 }
                 priv = ((CheckBox) findViewById(R.id.checkBox)).isChecked();
-                Event event = new Event(null,desc,priv,time1,time2,time3,time4,due,0,0,0,username);
-                DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
-                connectionHelper.createEvent(event,username);
+                if (editing) {
+                    event.setDescription(desc);
+                    event.setPrivate(priv);
+                    event.setTime1(time1);
+                    event.setTime2(time2);
+                    event.setTime3(time3);
+                    event.setTime4(time4);
+
+                    event.setDueDate(due);
+                    DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
+                    connectionHelper.updateEvent(event,username);
+                }
+                else {
+                    Event newEvent = new Event(null, desc, priv, time1, time2, time3, time4, due, 0, 0, 0, username);
+                    DBConnectionHelper connectionHelper = ((App) getApplication()).getDatabase();
+                    connectionHelper.createEvent(newEvent, username);
+                }
                 postEvent();
 
             }

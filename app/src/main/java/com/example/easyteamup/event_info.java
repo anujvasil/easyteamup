@@ -14,16 +14,18 @@ public class event_info extends AppCompatActivity {
 
     TextView name, owner, description, location, duetime;
     CheckBox time1, time2, time3, time4;
-
-    Button join, back;
+    Button join, back, modify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_info);
         back = (Button) findViewById(R.id.button17);
         join = (Button) findViewById(R.id.button29);
+        modify = (Button) findViewById(R.id.buttonModify);
+
 
 
         Event event = ((App)getApplication()).getEvent();
@@ -31,8 +33,19 @@ public class event_info extends AppCompatActivity {
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getEmail();
         if (username.equals(event.getOwner())) {
-            join.setText("Modify");
+//            join.setText("Invite");
+            modify.setVisibility(View.VISIBLE);
         }
+
+        modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                modifyEvent();
+
+            }
+
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,12 +83,12 @@ public class event_info extends AppCompatActivity {
         name.setText(event.getTitle());
         owner.setText(event.getOwner());
         description.setText(event.getDescription());
-        duetime.setText(event.getDueDate().toString());
+        duetime.setText(event.getDueDate() == null ? "No Due Date" : event.getDueDate().toString());
 
-        time1.setText(event.getTime1().toString());
-        time2.setText(event.getTime2().toString());
-        time3.setText(event.getTime3().toString());
-        time4.setText(event.getTime4().toString());
+        time1.setText(event.getTime1() == null ? "No time set" : event.getTime1().toString());
+        time2.setText(event.getTime2() == null ? "No time set" : event.getTime2().toString());
+        time3.setText(event.getTime3() == null ? "No time set" : event.getTime3().toString());
+        time4.setText(event.getTime4() == null ? "No time set" : event.getTime4().toString());
 
 
 
@@ -83,6 +96,12 @@ public class event_info extends AppCompatActivity {
 
     public void openList(){
         Intent intent = new Intent(this, discover_list.class);
+        startActivity(intent);
+    }
+
+    public void modifyEvent() {
+        Intent intent = new Intent(this, post_event.class);
+        intent.putExtra("Editing",true);
         startActivity(intent);
     }
 
