@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 password = passwordText.getText().toString();
                 if (!email.matches("") && !password.matches("")){
                     openSetup();
+                    ((App)getApplication()).setEmail(email);
                 }
 
             }
