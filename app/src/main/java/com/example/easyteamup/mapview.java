@@ -60,6 +60,9 @@ public class mapview extends AppCompatActivity {
         AnnotationPlugin annotationAPI = AnnotationPluginImplKt.getAnnotations((MapPluginProviderDelegate)mapView);
         PointAnnotationManager pointAnnotationManager = PointAnnotationManagerKt.createPointAnnotationManager(annotationAPI,mapView);
         for (Event e : eventList) {
+            if(e.getLat() < 1) {
+                continue;
+            }
             PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
                     .withPoint(e.getLocation())
                     .withIconImage(BitmapFactory.decodeResource(getResources(), R.drawable.mappin))
@@ -72,6 +75,9 @@ public class mapview extends AppCompatActivity {
             @Override
             public boolean onAnnotationClick(@NonNull PointAnnotation pointAnnotation) {
                 for (Event e : eventList) {
+                    if(e.getLat() < 1) {
+                        continue;
+                    }
                     if(Integer.parseInt(pointAnnotation.getTextField()) == e.getId()) {
                         ((App)getApplication()).setEvent(e);
                         openEventInfo();
