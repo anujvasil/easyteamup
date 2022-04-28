@@ -12,11 +12,15 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.geojson.Point;
@@ -36,7 +40,7 @@ import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.List;
 
-public class post_event extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class post_event extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
 
     Button back;
     Button post;
@@ -50,6 +54,7 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
     Integer dueday, duemonth, dueyear, duehour, dueminute;
     String username, email, fullname;
     int lastbutton;
+    Spinner spin;
 
     Event event;
 
@@ -61,6 +66,12 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_event);
+        spin = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerOptions, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
 
         EditText descriptionText = (EditText) findViewById(R.id.editTextTextPersonName4);
         CheckBox privateCheckbox = (CheckBox) findViewById(R.id.checkBox);
@@ -132,7 +143,6 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
 //                Log.e("test ", p.toString());
 //            }
 //        });
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -330,5 +340,16 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
     public void postEvent(){
         Intent intent = new Intent(this, my_pending_events.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

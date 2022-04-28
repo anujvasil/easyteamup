@@ -146,21 +146,6 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.56" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="122dp"
-        android:layout_height="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="New Username?"
-        android:textSize="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.6" />
-
     <TextView
         android:id="@+id/textView12"
         android:layout_width="283dp"
@@ -176,34 +161,18 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
-        android:layout_width="61dp"
-        android:layout_height="45dp"
+        android:layout_width="99dp"
+        android:layout_height="32dp"
+        android:background="#ED9E98"
         android:text="Set new email"
         android:textColor="#000000"
-        android:background="#ED9E98"
         android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.54" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button30"
-        android:layout_width="75dp"
-        android:layout_height="39dp"
-        android:text="set new username"
-        android:textColor="#000000"
-        android:background="#ED9E98"
-        android:textSize="6sp"
-        app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.541" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button31"

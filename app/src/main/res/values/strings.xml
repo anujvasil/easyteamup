@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">EasyTeamUp</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoid3N1cHBpZ2VyIiwiYSI6ImNsMWJjZXVqYzFnbW8zam53eWEyaGczd2MifQ.Z6kLMFXaxp2tF7zC81KqLw</string>
+    <string-array name="spinnerOptions">
+        <item>Athletic</item>
+        <item>Academic</item>
+        <item>Social</item>
+        <item>Other</item>
+    </string-array>
+
 </resources>
