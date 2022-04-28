@@ -174,12 +174,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.495" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
         android:layout_width="61dp"
         android:layout_height="45dp"
         android:text="Set new email"
-        android:textColor="#ED9E98"
+        android:textColor="#000000"
+        android:background="#ED9E98"
         android:textSize="6sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
@@ -188,12 +189,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.54" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button30"
         android:layout_width="75dp"
         android:layout_height="39dp"
         android:text="set new username"
-        android:textColor="#ED9E98"
+        android:textColor="#000000"
+        android:background="#ED9E98"
         android:textSize="6sp"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,12 +205,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.541" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button31"
         android:layout_width="110dp"
         android:layout_height="33dp"
         android:text="set new name"
-        android:textColor="#ED9E98"
+        android:background="#ED9E98"
+        android:textColor="#000000"
         android:textSize="6sp"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
