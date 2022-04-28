@@ -36,6 +36,9 @@ public class event_info extends AppCompatActivity {
 //            join.setText("Invite");
             modify.setVisibility(View.VISIBLE);
         }
+        else {
+            modify.setVisibility(View.GONE);
+        }
 
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
