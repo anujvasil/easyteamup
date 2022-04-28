@@ -1,12 +1,21 @@
 package com.example.easyteamup;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 public class event_info extends AppCompatActivity {
@@ -35,21 +44,21 @@ public class event_info extends AppCompatActivity {
         username = ((App)getApplication()).getUsername();
         email = ((App)getApplication()).getEmail();
         fullname = ((App)getApplication()).getEmail();
+        isGoing = connectionHelper.isAttending(username, event.getId());
         if (username.equals(event.getOwner())) {
-//            join.setText("Invite");
+            join.setText("Invite");
             modify.setVisibility(View.VISIBLE);
         }
-        else {
-            modify.setVisibility(View.GONE);
-        }
-
-        isGoing = connectionHelper.isAttending(username, event.getId());
-        if (isGoing) {
+        else if (isGoing){
             join.setText("Leave");
+            modify.setVisibility(View.GONE);
         }
         else {
             join.setText("Join");
+            modify.setVisibility(View.GONE);
         }
+
+
 
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +82,10 @@ public class event_info extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isGoing) {
+                if (username.equals(event.getOwner())) {
+                    invite();
+                }
+                else if (isGoing) {
                     connectionHelper.respondInvite(username, event.getId(), false);
                     join.setText("Join");
                 }
@@ -81,7 +93,7 @@ public class event_info extends AppCompatActivity {
                     connectionHelper.respondInvite(username, event.getId(), true);
                     join.setText("Leave");
                 }
-                isGoing = !isGoing;
+                isGoing= !isGoing;
 
             }
         });
@@ -123,7 +135,35 @@ public class event_info extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void invite() {
 
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setMessage("Invite a user by username");
+        EditText invitedUserET = new EditText(this);
+        builder.setView(invitedUserET);
+        builder.setPositiveButton("Invite", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String invitedUser = invitedUserET.getText().toString();
+                DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
+                connectionHelper.inviteAttendee(invitedUser,((App)getApplication()).getEvent().getId());
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Blank on purpose
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.setTitle("Invite User");
+        alert.show();
+
+
+
+    }
 
 
 
