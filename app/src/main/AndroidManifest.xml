@@ -30,6 +30,9 @@
             android:name=".discover_list"
             android:exported="false" />
         <activity
+            android:name=".choose_location"
+            android:exported="false" />
+        <activity
             android:name=".post_event"
             android:exported="false" />
         <activity

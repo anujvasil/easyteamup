@@ -168,7 +168,7 @@ public class my_pending_events extends AppCompatActivity {
     }
 
     public void newEvent(){
-        Intent intent = new Intent(this, post_event.class);
+        Intent intent = new Intent(this, choose_location.class);
         startActivity(intent);
     }
     public void openInvite(){

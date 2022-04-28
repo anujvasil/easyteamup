@@ -170,7 +170,7 @@ public class my_confirmed_events extends AppCompatActivity {
     }
 
     public void addEvent(){
-        Intent intent = new Intent(this, post_event.class);
+        Intent intent = new Intent(this, choose_location.class);
         startActivity(intent);
     }
 

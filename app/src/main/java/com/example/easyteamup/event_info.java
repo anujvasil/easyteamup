@@ -73,7 +73,7 @@ public class event_info extends AppCompatActivity {
         name = findViewById(R.id.textView5);
         owner = findViewById(R.id.textView7);
         description = findViewById(R.id.textView8);
-        location = findViewById(R.id.editTextTextPostalAddress);
+        location = findViewById(R.id.search_view);
         duetime = findViewById(R.id.textView11);
         time1 = findViewById(R.id.checkBox2);
         time2 = findViewById(R.id.checkBox5);

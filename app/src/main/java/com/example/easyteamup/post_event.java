@@ -1,12 +1,16 @@
 package com.example.easyteamup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,9 +18,23 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.mapbox.android.core.location.LocationEngine;
+import com.mapbox.geojson.Point;
+import com.mapbox.search.MapboxSearchSdk;
+import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.search.ResponseInfo;
+import com.mapbox.search.SearchEngine;
+import com.mapbox.search.SearchOptions;
+import com.mapbox.search.SearchRequestTask;
+import com.mapbox.search.SearchSuggestionsCallback;
+import com.mapbox.search.result.SearchResult;
+import com.mapbox.search.result.SearchSuggestion;
+import com.mapbox.search.ui.view.SearchBottomSheetView;
+
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
+import java.util.List;
 
 public class post_event extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -78,6 +96,43 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
             timeDue.setText("Due Date: " + event.getDueDate().getHours() + ":" + event.getDueDate().getMinutes() + " " + (event.getDueDate().getMonth() + 1) + "/" + event.getDueDate().getDay() + "/" + event.getDueDate().getYear());
 
         }
+
+
+////        LocationEngine locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+////        MapboxSearchSdk.initialize(getApplication(), getResources().getString(R.string.mapbox_access_token), locationEngine);
+////
+////        SearchEngine searchEngine = MapboxSearchSdk.getSearchEngine();
+////        SearchOptions options = new SearchOptions();
+////        SearchSuggestionsCallback onSearchResults = new SearchSuggestionsCallback() {
+////            @Override
+////            public void onSuggestions(@NonNull List<? extends SearchSuggestion> list, @NonNull ResponseInfo responseInfo) {
+////                for (SearchSuggestion s : list) {
+////                    Log.e("suggestion: ", s.getName());
+////                }
+////            }
+////
+////            @Override
+////            public void onError(@NonNull Exception e) {
+////                return;
+////            }
+////        };
+////        SearchRequestTask searchRequestTask = searchEngine.search("Paris", options, onSearchResults);
+//
+//
+//        SearchBottomSheetView searchBottomSheetView = (SearchBottomSheetView) findViewById(R.id.search_view);
+//        searchBottomSheetView.initializeSearch(savedInstanceState, new SearchBottomSheetView.Configuration());
+//        searchBottomSheetView.setHideableByDrag(true);
+//        searchBottomSheetView.addOnSearchResultClickListener(new SearchBottomSheetView.OnSearchResultClickListener() {
+//            @Override
+//            public void onSearchResultClick(@NonNull SearchResult searchResult, @NonNull ResponseInfo responseInfo) {
+//                Point p = searchResult.getCoordinate();
+//                p_lat = p.latitude();
+//                p_long = p.longitude();
+//                searchBottomSheetView.hide();
+//                Log.e("test ", p.toString());
+//            }
+//        });
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,10 +216,6 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
                 if(desc.isEmpty()) {
                     return;
                 }
-                String address = ((EditText) findViewById(R.id.editTextTextPostalAddress)).getText().toString();
-                if(address.isEmpty()) {
-                    return;
-                }
                 time1 = null; time2 = null; time3 = null; time4 = null; due = null;
                 if (time1day != null && time1minute != null && time1hour != null && time1month != null && time1year != null) {
                     time1 = new Timestamp(time1year-1900, time1month, time1day, time1hour, time1minute,0,0);
@@ -195,7 +246,9 @@ public class post_event extends AppCompatActivity implements DatePickerDialog.On
                     connectionHelper.updateEvent(event,username);
                 }
                 else {
-                    Event newEvent = new Event(null, desc, priv, time1, time2, time3, time4, due, 0, 0, 0, username);
+                    double lat = ((App)getApplication()).getLat();
+                    double lng = ((App)getApplication()).getLng();
+                    Event newEvent = new Event(null, desc, priv, time1, time2, time3, time4, due, 0, lat, lng, username);
                     DBConnectionHelper connectionHelper = ((App) getApplication()).getDatabase();
                     connectionHelper.createEvent(newEvent, username);
                 }

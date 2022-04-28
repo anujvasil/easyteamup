@@ -4,14 +4,35 @@ import android.app.Application;
 import android.net.Uri;
 import android.os.StrictMode;
 
+import com.mapbox.android.core.location.LocationEngine;
+import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.search.MapboxSearchSdk;
+
 public class App extends Application {
     private static App singleton;
     DBConnectionHelper connectionHelper;
     private String username;
     private String email;
     private String fullname;
+    private double lat = 0, lng = 0;
     private Event event;
     private Uri profile_pic;
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
 
     public Event getEvent() {
         return event;
@@ -70,6 +91,9 @@ public class App extends Application {
         StrictMode.setThreadPolicy(policy);
         connectionHelper = new DBConnectionHelper();
         singleton = this;
+        LocationEngine locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+        MapboxSearchSdk.initialize(this, getResources().getString(R.string.mapbox_access_token), locationEngine);
+
     }
 }
 
