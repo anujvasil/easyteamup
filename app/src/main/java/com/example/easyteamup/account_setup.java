@@ -74,7 +74,7 @@ public class account_setup extends AppCompatActivity {
         Intent intent = new Intent(this, my_account.class);
         ((App)getApplication()).setUsername(username);
         ((App)getApplication()).setFullname(fullname);
-        ((App)getApplication()).setEmail(email);
+        //((App)getApplication()).setEmail(email);
         ((App)getApplication()).setProfile_pic(selectedImage);
         startActivity(intent);
     }

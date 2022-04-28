@@ -20,7 +20,10 @@ public class my_account extends AppCompatActivity {
     Button discover;
     Button invite;
 
-    TextView fullnameView, emailView;
+    Button emailNew, unameNew, nameNew;
+    EditText nameEdit, emailEdit, unameEdit;
+
+    TextView fullnameView, emailView, uNameView;
 
     String email, fullname, username;
     Uri profile_pic;
@@ -38,7 +41,14 @@ public class my_account extends AppCompatActivity {
         fullname = ((App)getApplication()).getFullname();
         username = ((App)getApplication()).getUsername();
         profile_pic = ((App)getApplication()).getProfile_pic();
+        if (email == null || fullname == null || username == null) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
+        emailNew = (Button) findViewById(R.id.button3);
+        unameNew = (Button) findViewById(R.id.button30);
+        nameNew = (Button) findViewById(R.id.button31);
         logout = (Button) findViewById(R.id.button5);
         events = (Button) findViewById(R.id.button8);
         discover = (Button) findViewById(R.id.button7);
@@ -49,12 +59,41 @@ public class my_account extends AppCompatActivity {
         emailView.setText(email);
         fullnameView.setText(fullname);
         pic_view.setImageURI(profile_pic);
+        uNameView = findViewById(R.id.textView12);
+        emailEdit = (EditText) findViewById(R.id.editText2);
+        unameEdit = (EditText) findViewById(R.id.editText3);
+        nameEdit = (EditText) findViewById(R.id.editText19);
+
 
         pic_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), SELECT_PICTURE);
+            }
+        });
+
+        emailNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((App)getApplication()).setEmail(emailEdit.getText().toString());
+                emailView.setText(((App)getApplication()).getEmail());
+            }
+        });
+
+        unameNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((App)getApplication()).setUsername(unameEdit.getText().toString());
+                uNameView.setText(((App)getApplication()).getUsername());
+            }
+        });
+
+        nameNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((App)getApplication()).setFullname(nameEdit.getText().toString());
+                fullnameView.setText(((App)getApplication()).getFullname());
             }
         });
 

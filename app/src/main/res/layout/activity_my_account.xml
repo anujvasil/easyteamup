@@ -28,29 +28,31 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="339dp"
-        android:layout_height="24dp"
+        android:layout_width="282dp"
+        android:layout_height="28dp"
         android:background="#FFFFFF"
         android:text="Name"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.412" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="338dp"
-        android:layout_height="23dp"
+        android:layout_width="278dp"
+        android:layout_height="28dp"
         android:background="#FFFFFF"
-        android:text="email"
+        android:text="Email"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
 
     <Button
         android:id="@+id/button5"
@@ -111,4 +113,109 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957" />
+
+    <EditText
+        android:id="@+id/editText19"
+        android:layout_width="122dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="New Name?"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="4sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.525" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="122dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="New Email?"
+        android:textSize="4sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="122dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="New Username?"
+        android:textSize="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="283dp"
+        android:layout_height="25dp"
+        android:background="#FFFFFF"
+        android:text="Username"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="61dp"
+        android:layout_height="45dp"
+        android:text="Set new email"
+        android:textColor="#ED9E98"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.54" />
+
+    <Button
+        android:id="@+id/button30"
+        android:layout_width="75dp"
+        android:layout_height="39dp"
+        android:text="set new username"
+        android:textColor="#ED9E98"
+        android:textSize="6sp"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <Button
+        android:id="@+id/button31"
+        android:layout_width="110dp"
+        android:layout_height="33dp"
+        android:text="set new name"
+        android:textColor="#ED9E98"
+        android:textSize="6sp"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.595" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
