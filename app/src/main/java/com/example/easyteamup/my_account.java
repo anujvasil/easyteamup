@@ -38,6 +38,10 @@ public class my_account extends AppCompatActivity {
         fullname = ((App)getApplication()).getFullname();
         username = ((App)getApplication()).getUsername();
         profile_pic = ((App)getApplication()).getProfile_pic();
+        if (email == null || fullname == null || username == null) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
         logout = (Button) findViewById(R.id.button5);
         events = (Button) findViewById(R.id.button8);
