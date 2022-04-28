@@ -15,6 +15,8 @@ public class event_info extends AppCompatActivity {
     TextView name, owner, description, location, duetime;
     CheckBox time1, time2, time3, time4;
     Button join, back, modify;
+    DBConnectionHelper connectionHelper;
+    boolean isGoing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class event_info extends AppCompatActivity {
         modify = (Button) findViewById(R.id.buttonModify);
 
 
+        connectionHelper = ((App)getApplication()).getDatabase();
 
         Event event = ((App)getApplication()).getEvent();
         username = ((App)getApplication()).getUsername();
@@ -38,6 +41,14 @@ public class event_info extends AppCompatActivity {
         }
         else {
             modify.setVisibility(View.GONE);
+        }
+
+        isGoing = connectionHelper.isAttending(username, event.getId());
+        if (isGoing) {
+            join.setText("Leave");
+        }
+        else {
+            join.setText("Join");
         }
 
         modify.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +73,15 @@ public class event_info extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                DBConnectionHelper connectionHelper = ((App)getApplication()).getDatabase();
-                connectionHelper.publicJoinAttendee(username, event.getId());
-
-                openList();
+                if (isGoing) {
+                    connectionHelper.respondInvite(username, event.getId(), false);
+                    join.setText("Join");
+                }
+                else {
+                    connectionHelper.respondInvite(username, event.getId(), true);
+                    join.setText("Leave");
+                }
+                isGoing = !isGoing;
 
             }
         });

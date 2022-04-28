@@ -507,6 +507,25 @@ public class DBConnectionHelper {
         return true;
     }
 
+    public boolean isAttending(String attendee, int id) {
+        String query = "{CALL sp_isAttending(?,?)}";
+        CallableStatement stmt = prepCall(query);
+        try {
+            stmt.setString("p_attendee",attendee);
+            stmt.setInt("p_eventId", id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                boolean going = rs.getInt("going") == 1;
+                return going;
+            }
+            return false; // if not attending
+            }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean updateEvent(Event event, String owner) {
         String query = "{CALL sp_updateEvent(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         CallableStatement stmt = prepCall(query);
